@@ -5,13 +5,13 @@ plugins {
 
 allure {
     report {
-        version.set("2.19.0")
+        version.set("2.32.0")
     }
     adapter { // отвечает за появление каталога build/allure-results
         aspectjWeaver.set(true) //обработка аннотации @Step
         frameworks {
             junit5 { //название фреймворка
-                adapterVersion.set("2.19.0") //версия интеграции фреймворка и Allure
+                adapterVersion.set("2.32.0") //версия интеграции фреймворка и Allure
             }
         }
     }
@@ -28,10 +28,12 @@ dependencies {
 }
 
 tasks.withType(Test) {
-    useTestNG()  // Изменено с useJUnitPlatform на useTestNG
+    useJUnitPlatform()
 
     testLogging {
-        events "started", "skipped", "failed", "standard_error", "standard_out"
-        exceptionFormat "short"
+        lifecycle {
+            events "started", "skipped", "failed", "standard_error", "standard_out"
+            exceptionFormat "short"
+        }
     }
 }
