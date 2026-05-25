@@ -1,0 +1,24 @@
+plugins {
+    id 'java-library'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // Только TestNG (JUnit не нужен)
+    testImplementation 'org.testng:testng:7.8.0'
+
+    // Ваши другие зависимости для тестов
+    testImplementation 'com.codeborne:selenide:7.15.0'
+    testImplementation 'org.slf4j:slf4j-simple:2.0.9'
+}
+
+// Настройка тестов только для TestNG
+test {
+    useTestNG()
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
+}

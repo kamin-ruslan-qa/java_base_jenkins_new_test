@@ -1,0 +1,43 @@
+package tests.simple;
+
+import org.testng.annotations.Test;
+import static org.testng.Assert.assertTrue;
+
+public class NegativeTests {
+
+    @Test
+    void someTest() {
+        assertTrue(false);
+    }
+
+    @Test
+    void someTest1() {
+        assertTrue(false);
+    }
+
+    @Test
+    void someTest2() {
+        assertTrue(false);
+    }
+
+    @Test
+    void someTest3() {
+        assertTrue(false);
+    }
+
+    @Test
+    void someTest4() {
+        assertTrue(false);
+    }
+
+    @Test
+    void someTest5() {
+        assertTrue(false);
+    }
+
+    @Test
+    void someTest6() {
+        assertTrue(false);
+    }
+
+}
