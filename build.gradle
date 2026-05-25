@@ -16,9 +16,13 @@ dependencies {
 }
 
 // Настройка тестов только для TestNG
-test {
-    useTestNG()
+tasks.withType(Test) {
+    useJUnitPlatform()
+
     testLogging {
-        events "passed", "skipped", "failed"
+        lifecycle {
+            events "started", "skipped", "failed", "standard_error", "standard_out"
+            exceptionFormat "short"
+        }
     }
 }
