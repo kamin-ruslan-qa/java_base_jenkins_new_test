@@ -5,29 +5,35 @@ plugins {
 
 allure {
     report {
-        version.set("2.32.0")
+        version.set("2.19.0")
     }
-    adapter { // отвечает за появление каталога build/allure-results
+    adapter { // отвечает за появление папочки build/allure-results
         aspectjWeaver.set(true) //обработка аннотации @Step
         frameworks {
             junit5 { //название фреймворка
-                adapterVersion.set("2.32.0") //версия интеграции фреймворка и Allure
+                adapterVersion.set("2.19.0") //версия интеграции фреймворка и Allure
             }
         }
     }
 }
+
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    testImplementation 'org.testng:testng:7.8.0'
-    testImplementation 'io.qameta.allure:allure-testng:2.32.0'
-    testImplementation 'com.codeborne:selenide:7.15.0'
-    testImplementation 'org.slf4j:slf4j-simple:2.0.9'
+    testImplementation(
+            "com.codeborne:selenide:7.14.0",
+            "com.github.javafaker:javafaker:1.0.2",
+            "org.junit.jupiter:junit-jupiter:5.14.2",
+            'io.qameta.allure:allure-selenide:2.19.0')
 }
 
-tasks.withType(Test) {
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+tasks.withType(Test) {//расширить логирование в Jenkins
     useJUnitPlatform()
 
     testLogging {
